@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agha Shalwars | Your Lovable Choice</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <a href="/">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}"
+                 alt="Agha Shalwars Logo"
+                 class="logo">
+        </a>
+
+     <ul class="nav-links">
+
+    <li>
+        <a href="{{ url_for('home') }}">Home</a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('shop') }}">Shop</a>
+    </li>
+
+    <li>
+        <a href="#">Casual Wear</a>
+    </li>
+
+    <li>
+        <a href="#">Wedding Wear</a>
+    </li>
+
+    <li>
+        <a href="#">Abayas</a>
+    </li>
+
+    <li>
+        <a href="#">Contact</a>
+    </li>
+
+</ul>   
+
+        
+
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Agha Shalwars</h1>
+
+            <p>
+                Elegant styles made for every beautiful moment.
+            </p>
+
+            <a href="#" class="btn">
+                Explore Collection
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Categories -->
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>Our Collections</h2>
+
+            <p>
+                Discover our beautiful collection of women's fashion.
+            </p>
+
+        </div>
+
+
+        <div class="categories">
+
+            <div class="category-card">
+
+                <h3>Casual Wear</h3>
+
+                <p>
+                    Beautiful and comfortable shalwars
+                    for everyday occasions.
+                </p>
+
+                <a href="#" class="btn">
+                    View Collection
+                </a>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <h3>Wedding Wear</h3>
+
+                <p>
+                    Elegant shalwars designed for
+                    your special occasions.
+                </p>
+
+                <a href="#" class="btn">
+                    View Collection
+                </a>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <h3>Abayas</h3>
+
+                <p>
+                    Simple and elegant abayas
+                    for every occasion.
+                </p>
+
+                <a href="#" class="btn">
+                    View Collection
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>
+            © 2026 Agha Shalwars. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
