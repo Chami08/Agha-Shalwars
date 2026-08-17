@@ -25,32 +25,21 @@
                  class="logo">
         </a>
 
-        <ul class="nav-links">
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-            <li>
-                <a href="/">Home</a>
-            </li>
-
-            <li>
-                <a href="/shop">Shop</a>
-            </li>
-
-            <li>
-                <a href="#">Casual Wear</a>
-            </li>
-
-            <li>
-                <a href="#">Wedding Wear</a>
-            </li>
-
-            <li>
-                <a href="#">Abayas</a>
-            </li>
-
-            <li>
-                <a href="#">Contact</a>
-            </li>
-
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('shop') }}">Shop</a></li>
+            <li><a href="{{ url_for('casual_wear') }}">Casual Wear</a></li>
+            <li><a href="{{ url_for('wedding_wear') }}">Wedding Wear</a></li>
+            <li><a href="{{ url_for('wedding_kids_wear') }}">Wedding Kids Wear</a></li>
+            <li><a href="{{ url_for('shalwar_materials') }}">Shalwar Metirials</a></li>
+            <li><a href="{{ url_for('abayas') }}">Abayas</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
 
     </nav>
@@ -79,8 +68,9 @@
             <div class="product-card">
 
                 <div class="product-image">
-                    <p>Product Image</p>
-                </div>
+               <img src="{{ url_for('static', filename='images/casual/casual-1.jpeg') }}"
+                 alt="Agha Shalwars Casual Wear">
+               </div>
 
                 <div class="product-info">
 
@@ -106,9 +96,10 @@
 
             <div class="product-card">
 
-                <div class="product-image">
-                    <p>Product Image</p>
-                </div>
+                 <div class="product-image">
+               <img src="{{ url_for('static', filename='images/casual/casual-2.jpeg') }}"
+                 alt="Agha Shalwars Casual Wear">
+               </div>
 
                 <div class="product-info">
 
@@ -131,7 +122,35 @@
 
             </div>
 
+          <div class="product-card">
+
+                 <div class="product-image">
+                    <img src="{{ url_for('static', filename='images/casual/casual-3.jpeg') }}"
+                         alt="Agha Shalwars Casual Wear">
+                 </div>
+
+                 <div class="product-info">
+ 
+                    <h3>Printed Casual Shalwar</h3>
+
+                    <p class="price">
+                        Rs. 6,500
+                    </p>
+
+                    <p class="description">
+                        A beautiful modern design suitable
+                        for casual occasions.
+                    </p>
+
+                    <a href="#" class="btn">
+                        Order on WhatsApp
+                    </a>
+
+                </div>
+          </div>
+
         </div>
+
 
     </section>
 
@@ -146,8 +165,9 @@
             <div class="product-card">
 
                 <div class="product-image">
-                    <p>Product Image</p>
-                </div>
+                  <img src="{{ url_for('static', filename='images/wedding/wedding-1.jpeg') }}"
+                     alt="Wedding Wear">
+                  </div>
 
                 <div class="product-info">
 
@@ -174,8 +194,9 @@
             <div class="product-card">
 
                 <div class="product-image">
-                    <p>Product Image</p>
-                </div>
+                  <img src="{{ url_for('static', filename='images/wedding/wedding-2.jpeg') }}"
+                     alt="Wedding Wear">
+                  </div>
 
                 <div class="product-info">
 
@@ -198,9 +219,140 @@
 
             </div>
 
+            <div class="product-card">
+
+                <div class="product-image">
+                  <img src="{{ url_for('static', filename='images/wedding/wedding-3.jpeg') }}"
+                     alt="Wedding Wear">
+                  </div>
+
+                <div class="product-info">
+
+                    <h3>Premium Wedding Shalwar</h3>
+
+                    <p class="price">
+                        Rs. 15,500
+                    </p>
+
+                    <p class="description">
+                        A premium traditional design
+                        for your special moments.
+                    </p>
+
+                    <a href="#" class="btn">
+                        Order on WhatsApp
+                    </a>
+
+                </div>
+
+            </div>
+
+
+    
+
         </div>
 
     </section>
+
+       <!-- Wedding Kids Wear -->
+    <section class="products-section">
+
+        <h2>Wedding Kids Wear</h2>
+
+        <div class="products">
+
+            <div class="product-card">
+
+                <div class="product-image">
+                  <img src="{{ url_for('static', filename='images/weddingkids/weddingkids1.jpeg') }}"
+                     alt="Wedding Wear">
+                  </div>
+
+                <div class="product-info">
+
+                    <h3>wedding kids dresss    </h3>
+
+                    <p class="price">
+                        Rs. 12,500
+                    </p>
+
+                    <p class="description">
+                        Elegant embroidery designed for
+                        weddings and special occasions.
+                    </p>
+
+                    <a href="#" class="btn">
+                        Order on WhatsApp
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                  <img src="{{ url_for('static', filename='images/weddingkids/weddingkids2.jpeg') }}"
+                     alt="Wedding Wear">
+                  </div>
+
+                <div class="product-info">
+
+                    <h3>Premium Wedding Shalwar</h3>
+
+                    <p class="price">
+                        Rs. 15,500
+                    </p>
+
+                    <p class="description">
+                        A premium traditional design
+                        for your special moments.
+                    </p>
+
+                    <a href="#" class="btn">
+                        Order on WhatsApp
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                  <img src="{{ url_for('static', filename='images/weddingkids/weddingkids3.jpeg') }}"
+                     alt="Wedding Wear">
+                  </div>
+
+                <div class="product-info">
+
+                    <h3>Premium Wedding Shalwar</h3>
+
+                    <p class="price">
+                        Rs. 15,500
+                    </p>
+
+                    <p class="description">
+                        A premium traditional design
+                        for your special moments.
+                    </p>
+
+                    <a href="#" class="btn">
+                        Order on WhatsApp
+                    </a>
+
+                </div>
+
+            </div>
+
+
+    
+
+        </div>
+
+    </section>
+
 
 
     <!-- Abayas -->
@@ -212,12 +364,13 @@
 
             <div class="product-card">
 
-                <div class="product-image">
-                    <p>Product Image</p>
-                </div>
+               <div class="product-image">
+                   <img src="{{ url_for('static', filename='images/abaya/abaya-1.jpeg') }}"
+                    alt="abaya"> 
+               </div>    
 
                 <div class="product-info">
-
+ 
                     <h3>Classic Black Abaya</h3>
 
                     <p class="price">
@@ -240,9 +393,38 @@
 
             <div class="product-card">
 
-                <div class="product-image">
-                    <p>Product Image</p>
+                 <div class="product-image">
+                   <img src="{{ url_for('static', filename='images/abaya/abaya-2.jpeg') }}"
+                    alt="abaya"> 
+                  </div>    
+
+                <div class="product-info">
+
+                    <h3>Embroidered Abaya</h3>
+
+                    <p class="price">
+                        Rs. 9,500
+                    </p>
+
+                    <p class="description">
+                        Elegant embroidery combined with
+                        a modern design.
+                    </p>
+
+                    <a href="#" class="btn">
+                        Order on WhatsApp
+                    </a>
+
                 </div>
+
+            </div>
+
+ <div class="product-card">
+
+                 <div class="product-image">
+                   <img src="{{ url_for('static', filename='images/abaya/abaya-3.jpeg') }}"
+                    alt="abaya"> 
+                  </div>    
 
                 <div class="product-info">
 

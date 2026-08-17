@@ -25,35 +25,22 @@
                  class="logo">
         </a>
 
-     <ul class="nav-links">
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-    <li>
-        <a href="{{ url_for('home') }}">Home</a>
-    </li>
-
-    <li>
-        <a href="{{ url_for('shop') }}">Shop</a>
-    </li>
-
-    <li>
-        <a href="#">Casual Wear</a>
-    </li>
-
-    <li>
-        <a href="#">Wedding Wear</a>
-    </li>
-
-    <li>
-        <a href="#">Abayas</a>
-    </li>
-
-    <li>
-        <a href="#">Contact</a>
-    </li>
-
-</ul>   
-
-        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('shop') }}">Shop</a></li>
+            <li><a href="{{ url_for('casual_wear') }}">Casual Wear</a></li>
+            <li><a href="{{ url_for('wedding_wear') }}">Wedding Wear</a></li>
+            <li><a href="{{ url_for('wedding_kids_wear') }}">Wedding Kids Wear</a></li>
+            <li><a href="{{ url_for('shalwar_materials') }}">Shalwar Metirials</a></li>
+            <li><a href="{{ url_for('abayas') }}">Abayas</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
 
     </nav>
 
@@ -125,6 +112,38 @@
 
             </div>
 
+            <div class="category-card">
+
+                <h3>Wedding Kids Wear</h3>
+
+                <p>
+                    Elegant shalwars designed for
+                    your special occasions for kids.
+                </p>
+
+                <a href="#" class="btn">
+                    View Collection
+                </a>
+
+            </div>
+            
+            <div class="category-card">
+
+                <h3>Shalwar metirials</h3>
+
+                <p>
+                    Elegant shalwars metirials for
+                    your any occasions.
+                </p>
+
+                <a href="#" class="btn">
+                    View Collection
+                </a>
+
+            </div>
+
+
+
 
             <div class="category-card">
 
@@ -154,6 +173,8 @@
         </p>
 
     </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shalwar Materials | Agha Shalwars</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="/">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Agha Shalwars Logo" class="logo">
+        </a>
+
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('shop') }}">Shop</a></li>
+            <li><a href="{{ url_for('casual_wear') }}">Casual Wear</a></li>
+            <li><a href="{{ url_for('wedding_wear') }}">Wedding Wear</a></li>
+            <li><a href="{{ url_for('wedding_kids_wear') }}">Wedding Kids Wear</a></li>
+            <li><a href="{{ url_for('shalwar_materials') }}">Shalwar Metirials</a></li>
+            <li><a href="{{ url_for('abayas') }}">Abayas</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="shop-header">
+        <h1>Shalwar Materials Collection</h1>
+        <p>Premium quality fabrics and materials for creating beautiful shalwars</p>
+    </section>
+
+    <!-- Shalwar Materials Products -->
+    <section class="products-section">
+        <h2>Our Shalwar Materials</h2>
+
+        <div class="products">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='images/shalwar metirials/shalwarmetirials1.jpeg') }}" alt="Premium Cotton Material">
+                </div>
+                <div class="product-info">
+                    <h3>Premium Cotton Material</h3>
+                    <p class="price">Rs. 1,200 per meter</p>
+                    <p class="description">
+                        High-quality cotton fabric perfect for everyday shalwars. Soft, breathable, and durable for comfortable wear.
+                    </p>
+                    <a href="#" class="btn">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='images/shalwar metirials/shalwarmetrials2.jpeg') }}" alt="Embroidered Silk Material">
+                </div>
+                <div class="product-info">
+                    <h3>Embroidered Silk Material</h3>
+                    <p class="price">Rs. 2,500 per meter</p>
+                    <p class="description">
+                        Luxurious silk fabric with beautiful embroidery patterns. Ideal for wedding and special occasion shalwars.
+                    </p>
+                    <a href="#" class="btn">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='images/shalwar metirials/shalwarmetrials3.jpeg') }}" alt="Printed Linen Material">
+                </div>
+                <div class="product-info">
+                    <h3>Printed Linen Material</h3>
+                    <p class="price">Rs. 1,800 per meter</p>
+                    <p class="description">
+                        Beautiful printed linen with vibrant designs. Perfect for creating fashionable and comfortable everyday shalwars.
+                    </p>
+                    <a href="#" class="btn">Order on WhatsApp</a>
+                </div>
+            </div>
+
+           
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 Agha Shalwars. All Rights Reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

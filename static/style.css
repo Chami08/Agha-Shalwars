@@ -27,11 +27,15 @@ body {
     padding: 0 6%;
     background-color: #fffdf8;
     border-bottom: 1px solid #e5dcc7;
+    position: relative;
 }
 
 .logo {
     width: 100px;
     height: auto;
+    z-index: 1001;
+    border-radius: 10px;
+    margin-right: auto;
 }
 
 .nav-links {
@@ -49,6 +53,76 @@ body {
 
 .nav-links a:hover {
     color: #a88b35;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #29251f;
+    margin: 5px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #fffdf8;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        border-bottom: 1px solid #e5dcc7;
+    }
+
+    .nav-links.active {
+        max-height: 500px;
+    }
+
+    .nav-links li {
+        padding: 15px 6%;
+        border-bottom: 1px solid #f0ead8;
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+    }
 }
 
 /* ================================
@@ -171,6 +245,253 @@ body {
 }
 
 /* ================================
+   Contact Page
+================================ */
+
+.contact-section {
+    min-height: 100vh;
+    padding: 60px 6% 80px;
+    background-color: #f8f5ed;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.contact-header h1 {
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.contact-header p {
+    font-size: 18px;
+    color: #6d665a;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+/* Contact Form */
+.contact-form-container {
+    background-color: white;
+    padding: 50px;
+    border: 1px solid #eee5d3;
+    border-radius: 8px;
+}
+
+.contact-form-container h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: #29251f;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #29251f;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e5dcc7;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    transition: 0.3s ease;
+    color: #29251f;
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+    border-color: #d4b896;
+    background-color: #fffdf8;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #a88b35;
+    box-shadow: 0 0 8px rgba(168, 139, 53, 0.3);
+    background-color: white;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(168, 139, 53, 0.4);
+}
+
+.form-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+    display: none;
+}
+
+.form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+}
+
+.form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
+
+/* Contact Info */
+.contact-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.contact-info-container h2 {
+    font-size: 28px;
+    font-weight: 400;
+    color: #29251f;
+}
+
+.info-item {
+    background-color: white;
+    padding: 30px;
+    border: 1px solid #eee5d3;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(168, 139, 53, 0.15);
+    border-color: #a88b35;
+}
+
+.info-item h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #a88b35;
+}
+
+.info-item p {
+    color: #6d665a;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.info-item a {
+    color: #a88b35;
+    text-decoration: none;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+.info-item a:hover {
+    color: #80691f;
+    text-decoration: underline;
+    transform: translateX(3px);
+}
+
+/* Social Links */
+.social-links {
+    background-color: white;
+    padding: 30px;
+    border: 1px solid #eee5d3;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.social-links:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(168, 139, 53, 0.15);
+    border-color: #a88b35;
+}
+
+.social-links h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #a88b35;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background-color: #f8f5ed;
+    color: #29251f;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #e5dcc7;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.social-icon i {
+    font-size: 18px;
+}
+
+.social-icon span {
+    display: inline;
+}
+
+.social-icon:hover {
+    background-color: #a88b35;
+    color: white;
+    border-color: #a88b35;
+    transform: translateY(-2px);
+}
+
+/* ================================
    Mobile
 ================================ */
 
@@ -200,4 +521,153 @@ body {
     .categories {
         grid-template-columns: 1fr;
     }
+
+    /* Contact Page Mobile */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-section {
+        padding: 40px 5%;
+    }
+
+    .contact-header h1 {
+        font-size: 36px;
+    }
+
+    .contact-form-container,
+    .info-item,
+    .social-links {
+        padding: 30px 20px;
+    }
+
+    .social-icons {
+        flex-direction: column;
+    }
+
+    .social-icon {
+        width: 100%;
+        justify-content: flex-start;
+    }
 }
+    /* ================================
+   Shop Page
+================================ */
+
+.shop-header {
+    text-align: center;
+    padding: 70px 20px 40px;
+}
+
+.shop-header h1 {
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.shop-header p {
+    color: #777;
+    font-size: 16px;
+}
+
+.products-section {
+    padding: 40px 6% 70px;
+}
+
+.products-section h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 35px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #eee5d3;
+    overflow: hidden;
+    transition: 0.3s;
+    border-radius:10px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow:0 0 10px rgb(168, 139, 53, 0.4), 0 0 25px rgb(168, 139, 53, 0.35);
+
+}
+
+.product-image {
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    background-color: #f2eee5;
+    
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 22px;
+}
+
+.product-info h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #a88b35;
+}
+
+.description {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.product-info .btn {
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-header h1 {
+        font-size: 34px;
+    }
+
+    .product-image {
+        height: 420px;
+    }
+}
+
