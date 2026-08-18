@@ -2,104 +2,183 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Casual Wear | Agha Shalwars</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
-    <!-- Navigation -->
+
+    <!-- ================================
+         Navigation
+    ================================= -->
+
     <nav class="navbar">
+
         <a href="/">
-            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Agha Shalwars Logo" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}"
+                 alt="Agha Shalwars Logo"
+                 class="logo">
         </a>
 
         <button class="hamburger" id="hamburger">
+
             <span></span>
             <span></span>
             <span></span>
+
         </button>
 
         <ul class="nav-links" id="navLinks">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('shop') }}">Shop</a></li>
-            <li><a href="{{ url_for('casual_wear') }}">Casual Wear</a></li>
-            <li><a href="{{ url_for('wedding_wear') }}">Wedding Wear</a></li>
-            <li><a href="{{ url_for('wedding_kids_wear') }}">Wedding Kids Wear</a></li>
-            <li><a href="{{ url_for('shalwar_materials') }}">Shalwar Metirials</a></li>
-            <li><a href="{{ url_for('abayas') }}">Abayas</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+
+            <li>
+                <a href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shop') }}">Shop</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('casual_wear') }}">Casual Wear</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('wedding_wear') }}">
+                    Wedding Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('wedding_kids_wear') }}">
+                    Wedding Kids Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shalwar_materials') }}">
+                    Shalwar Materials
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('abayas') }}">
+                    Abayas
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('contact') }}">
+                    Contact
+                </a>
+            </li>
+
         </ul>
+
     </nav>
 
-    <!-- Page Header -->
+
+    <!-- ================================
+         Page Header
+    ================================= -->
+
     <section class="shop-header">
-        <h1>Casual Wear Collection</h1>
-        <p>Comfortable and stylish shalwars perfect for everyday occasions</p>
+
+        <h1>Casual Wear</h1>
+
+        <p>
+            Explore our beautiful collection of casual shalwars.
+        </p>
+
     </section>
 
-    <!-- Casual Wear Products -->
+
+    <!-- ================================
+         Products
+    ================================= -->
+
     <section class="products-section">
-        <h2>Our Casual Wear</h2>
+
+        <h2>Casual Wear Collection</h2>
 
         <div class="products">
 
-            <!-- Product 1 -->
+            {% for product in products %}
+
             <div class="product-card">
+
+
+                <!-- Product Image -->
+
                 <div class="product-image">
-                    <img src="{{ url_for('static', filename='images/casual/casual-1.jpeg') }}" alt="Elegant Casual Shalwar">
+
+                    <img
+                        src="{{ url_for('static', filename=product['image']) }}"
+                        alt="{{ product['name'] }}"
+                    >
+
                 </div>
+
+
+                <!-- Product Information -->
+
                 <div class="product-info">
-                    <h3>Elegant Casual Shalwar</h3>
-                    <p class="price">Rs. 5,500</p>
-                    <p class="description">
-                        Comfortable and stylish shalwar perfect for everyday wear. Made with premium fabric for all-day comfort.
+
+                    <h3>
+                        {{ product['name'] }}
+                    </h3>
+
+                    <p class="price">
+
+                        Rs.
+                        {{ "{:,.0f}".format(product['price']) }}
+
                     </p>
-                    <a href="#" class="btn">Order on WhatsApp</a>
+
+                    <p class="description">
+
+                        {{ product['description'] }}
+
+                    </p>
+
+                    <a
+                        href="{{ url_for('product_details', product_id=product['id']) }}"
+                        class="btn"
+                    >
+                        View Product
+                    </a>
+
                 </div>
+
             </div>
 
-            <!-- Product 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="{{ url_for('static', filename='images/casual/casual-2.jpeg') }}" alt="Printed Casual Shalwar">
-                </div>
-                <div class="product-info">
-                    <h3>Printed Casual Shalwar</h3>
-                    <p class="price">Rs. 6,500</p>
-                    <p class="description">
-                        A beautiful modern design suitable for casual occasions. Features vibrant prints and comfortable fit.
-                    </p>
-                    <a href="#" class="btn">Order on WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="{{ url_for('static', filename='images/casual/casual-3.jpeg') }}" alt="Printed Casual Shalwar">
-                </div>
-                <div class="product-info">
-                    <h3>Printed Casual Shalwar</h3>
-                    <p class="price">Rs. 6,500</p>
-                    <p class="description">
-                        A beautiful modern design suitable for casual occasions. Perfect blend of comfort and style.
-                    </p>
-                    <a href="#" class="btn">Order on WhatsApp</a>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
+
     </section>
 
-    <!-- Footer -->
+
+    <!-- ================================
+         Footer
+    ================================= -->
+
     <footer class="footer">
-        <p>© 2026 Agha Shalwars. All Rights Reserved.</p>
+
+        <p>
+            © 2026 Agha Shalwars. All Rights Reserved.
+        </p>
+
     </footer>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 

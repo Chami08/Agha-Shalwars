@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ product['name'] }} | Agha Shalwars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+
+    <!-- ================================
+         Navigation
+    ================================= -->
+
+    <nav class="navbar">
+
+        <a href="{{ url_for('home') }}">
+
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}"
+                 alt="Agha Shalwars Logo"
+                 class="logo">
+
+        </a>
+
+
+        <!-- Hamburger -->
+
+        <button class="hamburger" id="hamburger">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- Navigation Links -->
+
+        <ul class="nav-links" id="navLinks">
+
+            <li>
+                <a href="{{ url_for('home') }}">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shop') }}">
+                    Shop
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('casual_wear') }}">
+                    Casual Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('wedding_wear') }}">
+                    Wedding Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('wedding_kids_wear') }}">
+                    Wedding Kids Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shalwar_materials') }}">
+                    Shalwar Materials
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('abayas') }}">
+                    Abayas
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('contact') }}">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- ================================
+         Product Details
+    ================================= -->
+
+    <section class="product-details">
+
+
+        <!-- Product Image -->
+
+        <div class="product-details-image">
+
+            <img src="{{ url_for('static', filename=product['image']) }}"
+                 alt="{{ product['name'] }}">
+
+        </div>
+
+
+
+        <!-- Product Information -->
+
+        <div class="product-details-info">
+
+
+            <!-- Category -->
+
+            <p class="product-category">
+
+                {{ product['category'] }}
+
+            </p>
+
+
+
+            <!-- Product Name -->
+
+            <h1>
+
+                {{ product['name'] }}
+
+            </h1>
+
+
+
+            <!-- Price -->
+
+            <p class="price">
+
+                Rs. {{ "{:,.0f}".format(product['price']) }}
+
+            </p>
+
+
+
+            <!-- Description -->
+
+            <p class="description">
+
+                {{ product['description'] }}
+
+            </p>
+
+
+
+            <!-- ================================
+                 Size Selection
+            ================================= -->
+
+            {% if product['sizes'] %}
+
+            <div class="size-selection">
+
+                <h3>
+                    Select Size
+                </h3>
+
+
+                <div class="size-options">
+
+                    {% for size in product['sizes'].split(',') %}
+
+                    <button
+                        type="button"
+                        class="size-btn"
+                        onclick="selectSize(this, '{{ size }}')">
+
+                        {{ size }}
+
+                    </button>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <p id="selected-size">
+
+                    Please select a size
+
+                </p>
+
+            </div>
+
+            {% endif %}
+
+
+
+            <!-- ================================
+                 Stock & WhatsApp
+            ================================= -->
+
+            {% if product['stock'] > 0 %}
+
+
+            <p class="stock available">
+
+                ✓ In Stock
+
+            </p>
+
+
+
+            <!-- WhatsApp Order Button -->
+
+            <a id="whatsapp-button"
+               href="#"
+               class="btn"
+               target="_blank"
+               onclick="orderOnWhatsApp(event)">
+
+                Order on WhatsApp
+
+            </a>
+
+
+            {% else %}
+
+
+            <p class="stock unavailable">
+
+                ✕ Out of Stock
+
+            </p>
+
+
+            {% endif %}
+
+
+
+            <!-- Back to Shop -->
+
+            <br>
+
+            <a href="{{ url_for('shop') }}"
+               class="back-to-shop">
+
+                ← Back to Shop
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         Footer
+    ================================= -->
+
+    <footer class="footer">
+
+        <p>
+
+            © 2026 Agha Shalwars. All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================================
+         JavaScript
+    ================================= -->
+
+    <script>
+
+
+        /* ================================
+           Mobile Navigation
+        ================================= */
+
+        const hamburger =
+            document.getElementById("hamburger");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        hamburger.addEventListener("click", function () {
+
+            hamburger.classList.toggle("active");
+
+            navLinks.classList.toggle("active");
+
+        });
+
+
+
+        /* ================================
+           Size Selection
+        ================================= */
+
+        let selectedSize = "";
+
+
+
+        function selectSize(button, size) {
+
+
+            /* Get all size buttons */
+
+            const buttons =
+                document.querySelectorAll(".size-btn");
+
+
+            /* Remove selected class */
+
+            buttons.forEach(function (btn) {
+
+                btn.classList.remove("selected");
+
+            });
+
+
+            /* Add selected class */
+
+            button.classList.add("selected");
+
+
+            /* Save selected size */
+
+            selectedSize = size;
+
+
+            /* Show selected size */
+
+            document.getElementById("selected-size").textContent =
+                "Selected Size: " + size;
+
+        }
+
+
+
+        /* ================================
+           WhatsApp Order
+        ================================= */
+
+        function orderOnWhatsApp(event) {
+
+
+            event.preventDefault();
+
+
+            /* Check if product has sizes */
+
+            const hasSizes =
+                document.querySelectorAll(".size-btn").length > 0;
+
+
+            /* Require size selection */
+
+            if (hasSizes && selectedSize === "") {
+
+                alert("Please select a size before ordering.");
+
+                return;
+
+            }
+
+
+            /* Product information */
+
+            const productName =
+                "{{ product['name'] }}";
+
+
+            const category =
+                "{{ product['category'] }}";
+
+
+            const price =
+                "{{ '{:,.0f}'.format(product['price']) }}";
+
+
+            /* Create WhatsApp message */
+
+            let message =
+                "Hello Agha Shalwars,%0A%0A" +
+                "I would like to order:%20" +
+                encodeURIComponent(productName) +
+                "%0A%0A" +
+                "Category:%20" +
+                encodeURIComponent(category) +
+                "%0A" +
+                "Price:%20Rs.%20" +
+                encodeURIComponent(price);
+
+
+            /* Add selected size */
+
+            if (selectedSize !== "") {
+
+                message +=
+                    "%0A" +
+                    "Size:%20" +
+                    encodeURIComponent(selectedSize);
+
+            }
+
+
+            /* WhatsApp number */
+
+            const whatsappNumber =
+                "94755539965";
+
+
+            /* Create WhatsApp URL */
+
+            const whatsappURL =
+                "https://wa.me/" +
+                whatsappNumber +
+                "?text=" +
+                message;
+
+
+            /* Open WhatsApp */
+
+            window.open(
+                whatsappURL,
+                "_blank"
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

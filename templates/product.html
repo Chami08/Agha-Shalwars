@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+{{ product.name }} | Agha Shalwars
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ================================
+     Product Details
+================================ -->
+
+<section class="product-page">
+
+    <div class="product-container">
+
+
+        <!-- Product Image -->
+
+        <div class="product-detail-image">
+
+            <img src="{{ url_for('static', filename=product.image) }}"
+                 alt="{{ product.name }}">
+
+        </div>
+
+
+        <!-- Product Information -->
+
+        <div class="product-detail-info">
+
+            <p class="product-category">
+                {{ product.category }}
+            </p>
+
+
+            <h1>
+                {{ product.name }}
+            </h1>
+
+
+            <p class="product-detail-price">
+                Rs. {{ "{:,.0f}".format(product.price) }}
+            </p>
+
+
+            <p class="product-detail-description">
+                {{ product.description }}
+            </p>
+
+
+            {% if product.sizes %}
+
+            <div class="product-sizes">
+
+                <h3>
+                    Available Sizes
+                </h3>
+
+                <p>
+                    {{ product.sizes }}
+                </p>
+
+            </div>
+
+            {% endif %}
+
+
+            {% if product.available %}
+
+            <a href="#"
+               class="btn whatsapp-btn">
+
+                Order on WhatsApp
+
+            </a>
+
+            {% else %}
+
+            <p class="out-of-stock">
+                Currently unavailable
+            </p>
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

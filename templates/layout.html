@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Agha Shalwars
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- ================================
+         Navigation Bar
+    ================================= -->
+
+    <nav class="navbar">
+
+        <!-- Logo -->
+        <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}"
+                 alt="Agha Shalwars Logo"
+                 class="logo">
+        </a>
+
+
+        <!-- Hamburger Button -->
+        <button class="hamburger"
+                id="hamburger"
+                type="button"
+                aria-label="Open menu">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- Navigation Links -->
+        <ul class="nav-links" id="navLinks">
+
+            <li>
+                <a href="{{ url_for('home') }}">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('about') }}">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shop') }}">
+                    Shop
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('casual_wear') }}">
+                    Casual Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('wedding_wear') }}">
+                    Wedding Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('wedding_kids_wear') }}">
+                    Wedding Kids Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shalwar_materials') }}">
+                    Shalwar Materials
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('abayas') }}">
+                    Abayas
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('contact') }}">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================================
+         Main Content
+    ================================= -->
+
+    <main>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+
+    <!-- ================================
+         Footer
+    ================================= -->
+
+    <footer class="footer">
+
+        <p>
+            &copy; 2026 Agha Shalwars.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================================
+         Mobile Menu JavaScript
+    ================================= -->
+
+    <script>
+
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        hamburger.addEventListener("click", function () {
+
+            hamburger.classList.toggle("active");
+
+            navLinks.classList.toggle("active");
+
+        });
+
+    </script>
+
+</body>
+
+</html>

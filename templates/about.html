@@ -1,0 +1,204 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+About Us | Agha Shalwars
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ================================
+     About Page
+================================ -->
+
+<section class="about-page">
+
+    <!-- About Header -->
+
+    <div class="about-header">
+
+        <h1>About Agha Shalwars</h1>
+
+        <p>
+            Your Lovable Choice
+        </p>
+
+    </div>
+
+
+    <!-- About Content -->
+
+    <div class="about-container">
+
+        <div class="about-image">
+
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}"
+                 alt="Agha Shalwars">
+
+        </div>
+
+
+        <div class="about-content">
+
+            <h2>Welcome to Agha Shalwars</h2>
+
+            <p>
+                Agha Shalwars is a women's fashion store based in
+                Sri Lanka, offering beautiful and elegant Indian-inspired
+                dresses for every special occasion.
+            </p>
+
+            <p>
+                We offer a carefully selected collection of
+                <strong>Casual Wear Shalwars</strong>,
+                <strong>Wedding Wears</strong>,
+                <strong>Wedding Kids Wear</strong>,
+                <strong>Shalwar Materials</strong>,
+                <strong>Abayas</strong>, and other
+                elegant women's clothing.
+            </p>
+
+            <p>
+                Our goal is to provide stylish and comfortable
+                outfits while giving our customers a simple and
+                enjoyable shopping experience.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- What We Offer -->
+
+    <section class="about-offer">
+
+        <h2>What We Offer</h2>
+
+        <div class="about-cards">
+
+            <div class="about-card">
+
+                <h3>Casual Wear</h3>
+
+                <p>
+                    Comfortable and stylish shalwars
+                    perfect for everyday occasions.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <h3>Wedding Wear</h3>
+
+                <p>
+                    Elegant outfits designed for weddings,
+                    celebrations and special occasions.
+                </p>
+
+            </div>
+
+            
+            <div class="about-card">
+
+                <h3>Wedding Kids Wear</h3>
+
+                <p>
+                    Elegant kids outfits designed for weddings,
+                    celebrations and special occasions.
+                </p>
+
+            </div>
+
+            
+            <div class="about-card">
+
+                <h3>Shalwar Materilas</h3>
+
+                <p>
+                    Elegant designed shalwar materials,
+                    celebrations and special occasions.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <h3>Abayas</h3>
+
+                <p>
+                    Beautiful and modern abayas suitable
+                    for different occasions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Why Choose Us -->
+
+    <section class="why-us">
+
+        <h2>Why Choose Agha Shalwars?</h2>
+
+        <div class="why-us-list">
+
+            <div>
+                <h3>Quality</h3>
+                <p>
+                    We carefully select products with
+                    quality and style in mind.
+                </p>
+            </div>
+
+
+            <div>
+                <h3>Elegant Designs</h3>
+                <p>
+                    Discover modern and beautiful designs
+                    inspired by Indian fashion.
+                </p>
+            </div>
+
+
+            <div>
+                <h3>Easy Ordering</h3>
+                <p>
+                    Found something you love?
+                    Simply contact us through WhatsApp
+                    to place your order.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Call To Action -->
+
+    <section class="about-cta">
+
+        <h2>Find Your Perfect Style</h2>
+
+        <p>
+            Explore our collection and find something
+            special for you.
+        </p>
+
+        <a href="{{ url_for('shop') }}" class="btn">
+            Explore Our Collection
+        </a>
+
+    </section>
+
+</section>
+
+{% endblock %}

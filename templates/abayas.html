@@ -2,18 +2,27 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Abayas | Agha Shalwars</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
     <!-- Navigation -->
     <nav class="navbar">
+
         <a href="/">
-            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Agha Shalwars Logo" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}"
+                 alt="Agha Shalwars Logo"
+                 class="logo">
         </a>
 
         <button class="hamburger" id="hamburger">
@@ -23,84 +32,140 @@
         </button>
 
         <ul class="nav-links" id="navLinks">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('shop') }}">Shop</a></li>
-            <li><a href="{{ url_for('casual_wear') }}">Casual Wear</a></li>
-            <li><a href="{{ url_for('wedding_wear') }}">Wedding Wear</a></li>
-            <li><a href="{{ url_for('wedding_kids_wear') }}">Wedding Kids Wear</a></li>
-            <li><a href="{{ url_for('shalwar_materials') }}">Shalwar Metirials</a></li>
-            <li><a href="{{ url_for('abayas') }}">Abayas</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+
+            <li>
+                <a href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shop') }}">Shop</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('casual_wear') }}">Casual Wear</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('wedding_wear') }}">Wedding Wear</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('wedding_kids_wear') }}">
+                    Wedding Kids Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shalwar_materials') }}">
+                    Shalwar Materials
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('abayas') }}">Abayas</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </li>
+
         </ul>
+
     </nav>
 
+
     <!-- Page Header -->
+
     <section class="shop-header">
-        <h1>Abayas Collection</h1>
-        <p>Elegant and modest abayas perfect for every occasion</p>
+
+        <h1>Abayas</h1>
+
+        <p>
+            Discover our elegant collection of beautiful abayas.
+        </p>
+
     </section>
 
-    <!-- Abayas Products -->
+
+    <!-- Products -->
+
     <section class="products-section">
-        <h2>Our Abayas</h2>
+
+        <h2>Our Abaya Collection</h2>
 
         <div class="products">
 
-            <!-- Product 1 -->
+            {% for product in products %}
+
             <div class="product-card">
+
                 <div class="product-image">
-                    <img src="{{ url_for('static', filename='images/abaya/abaya-1.jpeg') }}" alt="Classic Black Abaya">
+
+                    <img
+                        src="{{ url_for('static', filename=product['image']) }}"
+                        alt="{{ product['name'] }}"
+                    >
+
                 </div>
+
                 <div class="product-info">
-                    <h3>Classic Black Abaya</h3>
-                    <p class="price">Rs. 3,500</p>
-                    <p class="description">
-                        Simple and elegant black abaya perfect for everyday wear. Made with high-quality fabric for comfort and durability.
+
+                    <h3>
+                        {{ product['name'] }}
+                    </h3>
+
+                    <p class="price">
+                        Rs. {{ "{:,.0f}".format(product['price']) }}
                     </p>
-                    <a href="#" class="btn">Order on WhatsApp</a>
+
+                    <p class="description">
+                        {{ product['description'] }}
+                    </p>
+
+                    <a
+                        href="{{ url_for('product_details', product_id=product['id']) }}"
+                        class="btn"
+                    >
+                        View Product
+                    </a>
+
                 </div>
+
             </div>
 
-            <!-- Product 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="{{ url_for('static', filename='images/abaya/abaya-2.jpeg') }}" alt="Embroidered Abaya">
-                </div>
-                <div class="product-info">
-                    <h3>Embroidered Abaya</h3>
-                    <p class="price">Rs. 5,500</p>
-                    <p class="description">
-                        Beautiful embroidered abaya with intricate designs. Perfect for special occasions and celebrations.
-                    </p>
-                    <a href="#" class="btn">Order on WhatsApp</a>
-                </div>
-            </div>
+            {% endfor %}
 
-            <!-- Product 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="{{ url_for('static', filename='images/abaya/abaya-3.jpeg') }}" alt="Casual Beige Abaya">
-                </div>
-                <div class="product-info">
-                    <h3>Casual Beige Abaya</h3>
-                    <p class="price">Rs. 4,000</p>
-                    <p class="description">
-                        Stylish beige abaya with modern design. Versatile piece suitable for both casual and formal occasions.
-                    </p>
-                    <a href="#" class="btn">Order on WhatsApp</a>
-                </div>
-            </div>
-
-          
         </div>
+
     </section>
 
+
     <!-- Footer -->
+
     <footer class="footer">
-        <p>© 2026 Agha Shalwars. All Rights Reserved.</p>
+
+        <p>
+            © 2026 Agha Shalwars. All Rights Reserved.
+        </p>
+
     </footer>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <!-- Mobile Menu -->
+
+    <script>
+
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        hamburger.addEventListener("click", function () {
+
+            hamburger.classList.toggle("active");
+            navLinks.classList.toggle("active");
+
+        });
+
+    </script>
 
 </body>
 

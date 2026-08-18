@@ -2,104 +2,186 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Wedding Wear | Agha Shalwars</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
-    <!-- Navigation -->
+
+    <!-- ================================
+         Navigation
+    ================================= -->
+
     <nav class="navbar">
+
         <a href="/">
-            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Agha Shalwars Logo" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}"
+                 alt="Agha Shalwars Logo"
+                 class="logo">
         </a>
 
         <button class="hamburger" id="hamburger">
+
             <span></span>
             <span></span>
             <span></span>
+
         </button>
 
         <ul class="nav-links" id="navLinks">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('shop') }}">Shop</a></li>
-            <li><a href="{{ url_for('casual_wear') }}">Casual Wear</a></li>
-            <li><a href="{{ url_for('wedding_wear') }}">Wedding Wear</a></li>
-            <li><a href="{{ url_for('wedding_kids_wear') }}">Wedding Kids Wear</a></li>
-            <li><a href="{{ url_for('shalwar_materials') }}">Shalwar Metirials</a></li>
-            <li><a href="{{ url_for('abayas') }}">Abayas</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+
+            <li>
+                <a href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shop') }}">Shop</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('casual_wear') }}">
+                    Casual Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('wedding_wear') }}">
+                    Wedding Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('wedding_kids_wear') }}">
+                    Wedding Kids Wear
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shalwar_materials') }}">
+                    Shalwar Materials
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('abayas') }}">
+                    Abayas
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('contact') }}">
+                    Contact
+                </a>
+            </li>
+
         </ul>
+
     </nav>
 
-    <!-- Page Header -->
+
+    <!-- ================================
+         Page Header
+    ================================= -->
+
     <section class="shop-header">
-        <h1>Wedding Wear Collection</h1>
-        <p>Elegant and exquisite shalwars designed for your special occasions</p>
+
+        <h1>Wedding Wear</h1>
+
+        <p>
+            Explore our elegant collection of wedding wear
+            for your special occasions.
+        </p>
+
     </section>
 
-    <!-- Wedding Wear Products -->
+
+    <!-- ================================
+         Products
+    ================================= -->
+
     <section class="products-section">
-        <h2>Our Wedding Wear</h2>
+
+        <h2>Wedding Wear Collection</h2>
 
         <div class="products">
 
-            <!-- Product 1 -->
+            {% for product in products %}
+
             <div class="product-card">
+
+
+                <!-- Product Image -->
+
                 <div class="product-image">
-                    <img src="{{ url_for('static', filename='images/wedding/wedding-1.jpeg') }}" alt="Embroidered Wedding Shalwar">
+
+                    <img
+                        src="{{ url_for('static', filename=product['image']) }}"
+                        alt="{{ product['name'] }}"
+                    >
+
                 </div>
+
+
+                <!-- Product Information -->
+
                 <div class="product-info">
-                    <h3>Embroidered Wedding Shalwar</h3>
-                    <p class="price">Rs. 12,500</p>
-                    <p class="description">
-                        Elegant embroidery designed for your special day. Premium fabric with intricate details and beautiful craftsmanship.
+
+                    <h3>
+                        {{ product['name'] }}
+                    </h3>
+
+                    <p class="price">
+
+                        Rs.
+                        {{ "{:,.0f}".format(product['price']) }}
+
                     </p>
-                    <a href="#" class="btn">Order on WhatsApp</a>
+
+                    <p class="description">
+
+                        {{ product['description'] }}
+
+                    </p>
+
+                    <a
+                        href="{{ url_for('product_details', product_id=product['id']) }}"
+                        class="btn"
+                    >
+                        View Product
+                    </a>
+
                 </div>
+
             </div>
 
-            <!-- Product 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="{{ url_for('static', filename='images/wedding/wedding-2.jpeg') }}" alt="Royal Wedding Shalwar">
-                </div>
-                <div class="product-info">
-                    <h3>Royal Wedding Shalwar</h3>
-                    <p class="price">Rs. 15,000</p>
-                    <p class="description">
-                        A majestic piece perfect for wedding ceremonies. Features luxurious embellishments and superior quality fabric.
-                    </p>
-                    <a href="#" class="btn">Order on WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="{{ url_for('static', filename='images/wedding/wedding-3.jpeg') }}" alt="Bridal Wedding Shalwar">
-                </div>
-                <div class="product-info">
-                    <h3>Bridal Wedding Shalwar</h3>
-                    <p class="price">Rs. 18,000</p>
-                    <p class="description">
-                        Stunning bridal collection with intricate embroidery and precious detailing. Perfect for your big day.
-                    </p>
-                    <a href="#" class="btn">Order on WhatsApp</a>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
+
     </section>
 
-    <!-- Footer -->
+
+    <!-- ================================
+         Footer
+    ================================= -->
+
     <footer class="footer">
-        <p>© 2026 Agha Shalwars. All Rights Reserved.</p>
+
+        <p>
+            © 2026 Agha Shalwars. All Rights Reserved.
+        </p>
+
     </footer>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 
