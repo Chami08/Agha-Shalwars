@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Agha Shalwars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ================================
+         Admin Dashboard
+    ================================= -->
+
+    <section class="admin-dashboard">
+
+        <div class="admin-container">
+
+            <!-- Header -->
+
+            <div class="admin-header">
+
+                <div>
+                    <h1>Agha Shalwars</h1>
+
+                    <p>
+                        Admin Dashboard
+                    </p>
+                </div>
+
+                <a href="{{ url_for('admin_logout') }}"
+                   class="logout-btn">
+
+                    Logout
+
+                </a>
+
+            </div>
+
+
+            <!-- Welcome -->
+
+            <div class="admin-welcome">
+
+                <h2>
+                    Welcome, Admin
+                </h2>
+
+                <p>
+                    Manage your products and website from here.
+                </p>
+
+            </div>
+
+
+            <!-- Statistics -->
+
+            <div class="admin-stats">
+
+                <!-- Total Products -->
+
+                <div class="stat-card">
+
+                    <h3>
+                        Total Products
+                    </h3>
+
+                    <p>
+                        {{ total_products }}
+                    </p>
+
+                </div>
+
+
+                <!-- In Stock -->
+
+                <div class="stat-card">
+
+                    <h3>
+                        In Stock
+                    </h3>
+
+                    <p>
+                        {{ in_stock }}
+                    </p>
+
+                </div>
+
+
+                <!-- Out Of Stock -->
+
+                <div class="stat-card">
+
+                    <h3>
+                        Out of Stock
+                    </h3>
+
+                    <p>
+                        {{ out_of_stock }}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product Management -->
+
+            <div class="admin-section">
+
+                <h2>
+                    Product Management
+                </h2>
+
+                <div class="admin-actions">
+
+                    <a href="{{ url_for('add_product') }}"
+                       class="admin-action-btn">
+
+                        ➕ Add Product
+
+                    </a>
+
+
+                    <a href="{{ url_for('manage_products') }}"
+                       class="admin-action-btn">
+
+                        📦 Manage Products
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Customer Management -->
+
+            <div class="admin-section">
+
+                <h2>
+                    Customer Management
+                </h2>
+
+                <div class="admin-actions">
+
+                   <a href="{{ url_for('admin_submissions') }}"
+                      class="admin-action-btn">
+
+                       👥 View Submissions
+
+                      </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Back To Website -->
+
+            <div class="admin-footer">
+
+                <a href="{{ url_for('home') }}">
+
+                    ← Back to Website
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>

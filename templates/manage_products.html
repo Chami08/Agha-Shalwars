@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Products | Agha Shalwars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ================================
+         Admin Product Management
+    ================================= -->
+
+    <section class="admin-dashboard">
+
+        <div class="admin-container">
+
+
+            <!-- ================================
+                 Header
+            ================================= -->
+
+            <div class="admin-header">
+
+                <div>
+
+                    <h1>Agha Shalwars</h1>
+
+                    <p>
+                        Manage Products
+                    </p>
+
+                </div>
+
+
+                <a href="{{ url_for('admin_dashboard') }}"
+                   class="logout-btn">
+
+                    Dashboard
+
+                </a>
+
+            </div>
+
+
+
+            <!-- ================================
+                 Product Management
+            ================================= -->
+
+            <div class="admin-section">
+
+                <div class="manage-products-header">
+
+                    <div>
+
+                        <h2>
+                            Products
+                        </h2>
+
+                        <p>
+                            Search, edit or delete your products.
+                        </p>
+
+                    </div>
+
+
+                    <a href="{{ url_for('add_product') }}"
+                       class="btn">
+
+                        + Add Product
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- ================================
+                     Search and Filter
+                ================================= -->
+
+                <div class="product-search">
+
+                    <input
+                        type="text"
+                        id="productSearch"
+                        placeholder="Search product..."
+                        onkeyup="searchProducts()"
+                    >
+
+
+                    <select
+                        id="categoryFilter"
+                        onchange="filterProducts()"
+                    >
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="Casual Wear">
+                            Casual Wear
+                        </option>
+
+                        <option value="Wedding Wear">
+                            Wedding Wear
+                        </option>
+
+                        <option value="Wedding Kids Wear">
+                            Wedding Kids Wear
+                        </option>
+
+                        <option value="Shalwar Materials">
+                            Shalwar Materials
+                        </option>
+
+                        <option value="Abayas">
+                            Abayas
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ================================
+                     Products
+                ================================= -->
+
+                <div class="manage-product-list">
+
+
+                    {% for product in products %}
+
+
+                    <div class="manage-product-item"
+                         data-name="{{ product['name']|lower }}"
+                         data-category="{{ product['category'] }}">
+
+
+                        <!-- Product Image -->
+
+                        <div class="manage-product-image">
+
+                            <img
+                                src="{{ url_for('static', filename=product['image']) }}"
+                                alt="{{ product['name'] }}"
+                            >
+
+                        </div>
+
+
+
+                        <!-- Product Information -->
+
+                        <div class="manage-product-info">
+
+                            <h3>
+                                {{ product['name'] }}
+                            </h3>
+
+
+                            <p>
+
+                                <strong>
+                                    Category:
+                                </strong>
+
+                                {{ product['category'] }}
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>
+                                    Price:
+                                </strong>
+
+                                Rs.
+                                {{ "{:,.0f}".format(product['price']) }}
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>
+                                    Stock:
+                                </strong>
+
+                                {{ product['stock'] }}
+
+                            </p>
+
+
+                            <p class="product-id">
+
+                                Product ID:
+                                #{{ product['id'] }}
+
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- ================================
+                             Actions
+                        ================================= -->
+
+                        <div class="manage-product-actions">
+
+
+                            <a
+                                href="{{ url_for('edit_product', product_id=product['id']) }}"
+                                class="edit-btn"
+                            >
+
+                                ✏️ Edit
+
+                            </a>
+
+
+                            <a
+                                href="{{ url_for('delete_product', product_id=product['id']) }}"
+                                class="delete-btn"
+                                onclick="return confirmDelete()"
+                            >
+                                🗑️ Delete
+                            </a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    {% else %}
+
+
+                    <div class="no-products">
+
+                        <h3>
+                            No Products Found
+                        </h3>
+
+                        <p>
+                            You haven't added any products yet.
+                        </p>
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================================
+                 Back
+            ================================= -->
+
+            <div class="admin-footer">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+
+                    ← Back to Dashboard
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+</body>
+
+</html>

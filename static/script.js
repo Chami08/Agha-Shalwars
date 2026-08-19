@@ -17,47 +17,82 @@ if (hamburger) {
     });
 }
 
-// Contact Form Handler
-const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
 
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            subject: formData.get('subject'),
-            message: formData.get('message')
-        };
 
-        // Simple validation
-        if (!data.name || !data.email || !data.subject || !data.message) {
-            showMessage('Please fill in all required fields.', 'error');
-            return;
-        }
+// ================================
+// Admin Product Search & Filter
+// ================================
 
-        // For now, show success message (you can integrate with backend later)
-        showMessage('Thank you! Your message has been sent successfully. We will get back to you soon!', 'success');
-        
-        // Reset form
-        contactForm.reset();
-
-        // Clear message after 5 seconds
-        setTimeout(() => {
-            formMessage.classList.remove('success', 'error');
-            formMessage.textContent = '';
-        }, 5000);
-    });
+function searchProducts() {
+    filterProducts();
 }
 
-function showMessage(text, type) {
-    if (formMessage) {
-        formMessage.textContent = text;
-        formMessage.className = 'form-message ' + type;
+
+function filterProducts() {
+
+    const searchInput =
+        document.getElementById("productSearch");
+
+    const categorySelect =
+        document.getElementById("categoryFilter");
+
+    // If these elements don't exist,
+    // do nothing.
+    if (!searchInput || !categorySelect) {
+        return;
     }
+
+    const search =
+        searchInput.value.toLowerCase();
+
+    const category =
+        categorySelect.value;
+
+    const products =
+        document.querySelectorAll(".manage-product-item");
+
+
+    products.forEach(function(product) {
+
+        const name =
+            product.getAttribute("data-name");
+
+        const productCategory =
+            product.getAttribute("data-category");
+
+
+        const matchesSearch =
+            name.includes(search);
+
+
+        const matchesCategory =
+            category === "all" ||
+            productCategory === category;
+
+
+        if (matchesSearch && matchesCategory) {
+
+            product.style.display = "grid";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+// ================================
+// Delete Product Confirmation
+// ================================
+
+function confirmDelete() {
+
+    return confirm(
+        "Are you sure you want to delete this product?"
+    );
+
 }

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Submissions | Agha Shalwars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <section class="submissions-page">
+
+        <div class="submissions-container">
+
+            <!-- Header -->
+
+            <div class="submissions-header">
+
+                <div>
+
+                    <h1>
+                        Customer Submissions
+                    </h1>
+
+                    <p>
+                        Messages received from customers
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('admin_dashboard') }}"
+                   class="logout-btn">
+
+                    ← Dashboard
+
+                </a>
+
+            </div>
+
+
+            <!-- Submissions -->
+
+            {% if submissions %}
+
+                <div class="submissions-list">
+
+                    {% for submission in submissions %}
+
+                        <div class="submission-card">
+
+                            <div class="submission-header">
+
+                                <h2>
+                                    {{ submission["subject"] }}
+                                </h2>
+
+                                <span>
+                                    {{ submission["created_at"] }}
+                                </span>
+
+                            </div>
+
+
+                            <div class="submission-info">
+
+                                <p>
+                                    <strong>Name:</strong>
+                                    {{ submission["name"] }}
+                                </p>
+
+                                <p>
+                                    <strong>Email:</strong>
+                                    {{ submission["email"] }}
+                                </p>
+
+                                <p>
+                                    <strong>Phone:</strong>
+                                    {{ submission["phone"] or "Not provided" }}
+                                </p>
+
+                            </div>
+
+
+                            <div class="submission-message">
+
+                                <h3>
+                                    Message
+                                </h3>
+
+                                <p>
+                                    {{ submission["message"] }}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="no-submissions">
+
+                    <h2>
+                        No Submissions Yet
+                    </h2>
+
+                    <p>
+                        Customer messages will appear here.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+
+            <!-- Back to Website -->
+
+            <div class="admin-footer">
+
+                <a href="{{ url_for('home') }}">
+
+                    ← Back to Website
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

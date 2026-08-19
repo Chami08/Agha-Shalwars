@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Product | Agha Shalwars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <section class="admin-dashboard">
+
+        <div class="admin-container">
+
+            <!-- Header -->
+
+            <div class="admin-header">
+
+                <div>
+
+                    <h1>Agha Shalwars</h1>
+
+                    <p>Add New Product</p>
+
+                </div>
+
+                <a href="{{ url_for('manage_products') }}"
+                   class="logout-btn">
+
+                    Manage Products
+
+                </a>
+
+            </div>
+
+
+            <!-- Add Product Form -->
+
+            <div class="admin-section">
+
+                <h2>Add New Product</h2>
+
+                <form
+                    method="POST"
+                    enctype="multipart/form-data"
+                    class="admin-product-form"
+                >
+
+
+                    <!-- Product Name -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Product Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter product name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Category -->
+
+                    <div class="form-group">
+
+                        <label for="category">
+                            Category
+                        </label>
+
+                        <select
+                            id="category"
+                            name="category"
+                            required
+                        >
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="Casual Wear">
+                                Casual Wear
+                            </option>
+
+                            <option value="Wedding Wear">
+                                Wedding Wear
+                            </option>
+
+                            <option value="Wedding Kids Wear">
+                                Wedding Kids Wear
+                            </option>
+
+                            <option value="Shalwar Materials">
+                                Shalwar Materials
+                            </option>
+
+                            <option value="Abayas">
+                                Abayas
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Price -->
+
+                    <div class="form-group">
+
+                        <label for="price">
+                            Price (Rs.)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="price"
+                            name="price"
+                            placeholder="Enter price"
+                            min="0"
+                            step="1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Description -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows="5"
+                            placeholder="Enter product description"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- Sizes -->
+
+                    <div class="form-group">
+
+                        <label for="sizes">
+                            Sizes
+                        </label>
+
+                        <input
+                            type="text"
+                            id="sizes"
+                            name="sizes"
+                            placeholder="S, M, L, XL"
+                        >
+
+                        <small>
+                            Example: S, M, L, XL
+                        </small>
+
+                    </div>
+
+
+                    <!-- Stock -->
+
+                    <div class="form-group">
+
+                        <label for="stock">
+                            Stock
+                        </label>
+
+                        <input
+                            type="number"
+                            id="stock"
+                            name="stock"
+                            value="1"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Product Image -->
+
+                    <div class="form-group">
+
+                        <label for="image">
+                            Product Image
+                        </label>
+
+                        <input
+                            type="file"
+                            id="image"
+                            name="image"
+                            accept=".jpg,.jpeg,.png,.webp"
+                            required
+                        >
+
+                        <small>
+                            Upload JPG, JPEG, PNG or WEBP.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+
+                    <div class="admin-form-actions">
+
+                        <button
+                            type="submit"
+                            class="btn"
+                        >
+
+                            Add Product
+
+                        </button>
+
+
+                        <a
+                            href="{{ url_for('manage_products') }}"
+                            class="cancel-btn"
+                        >
+
+                            Cancel
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- Footer -->
+
+            <div class="admin-footer">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+
+                    ← Back to Dashboard
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

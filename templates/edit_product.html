@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+s
+    <title>Edit Product | Agha Shalwars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <section class="admin-dashboard">
+
+        <div class="admin-container">
+
+            <!-- Header -->
+
+            <div class="admin-header">
+
+                <div>
+
+                    <h1>Agha Shalwars</h1>
+
+                    <p>Edit Product</p>
+
+                </div>
+
+                <a href="{{ url_for('manage_products') }}"
+                   class="logout-btn">
+
+                    Manage Products
+
+                </a>
+
+            </div>
+
+
+            <!-- Edit Product -->
+
+            <div class="admin-section">
+
+                <h2>Edit Product</h2>
+
+
+                <form method="POST"
+                      enctype="multipart/form-data"
+                      class="admin-product-form">
+
+
+                    <!-- Product Name -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Product Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value="{{ product['name'] }}"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Category -->
+
+                    <div class="form-group">
+
+                        <label for="category">
+                            Category
+                        </label>
+
+                        <select
+                            id="category"
+                            name="category"
+                            required
+                        >
+
+                            <option value="Casual Wear"
+                                {% if product['category'] == 'Casual Wear' %}selected{% endif %}>
+                                Casual Wear
+                            </option>
+
+                            <option value="Wedding Wear"
+                                {% if product['category'] == 'Wedding Wear' %}selected{% endif %}>
+                                Wedding Wear
+                            </option>
+
+                            <option value="Wedding Kids Wear"
+                                {% if product['category'] == 'Wedding Kids Wear' %}selected{% endif %}>
+                                Wedding Kids Wear
+                            </option>
+
+                            <option value="Shalwar Materials"
+                                {% if product['category'] == 'Shalwar Materials' %}selected{% endif %}>
+                                Shalwar Materials
+                            </option>
+
+                            <option value="Abayas"
+                                {% if product['category'] == 'Abayas' %}selected{% endif %}>
+                                Abayas
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Price -->
+
+                    <div class="form-group">
+
+                        <label for="price">
+                            Price (Rs.)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="price"
+                            name="price"
+                            value="{{ product['price'] }}"
+                            min="0"
+                            step="1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Description -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows="5"
+                            required
+                        >{{ product['description'] }}</textarea>
+
+                    </div>
+
+
+                    <!-- Sizes -->
+
+                    <div class="form-group">
+
+                        <label for="sizes">
+                            Sizes
+                        </label>
+
+                        <input
+                            type="text"
+                            id="sizes"
+                            name="sizes"
+                            value="{{ product['sizes'] or '' }}"
+                            placeholder="S, M, L, XL"
+                        >
+
+                        <small>
+                            Example: S, M, L, XL
+                        </small>
+
+                    </div>
+
+
+                    <!-- Stock -->
+
+                    <div class="form-group">
+
+                        <label for="stock">
+                            Stock
+                        </label>
+
+                        <input
+                            type="number"
+                            id="stock"
+                            name="stock"
+                            value="{{ product['stock'] }}"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Current Image -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Current Image
+                        </label>
+
+                        <div class="current-product-image">
+
+                            <img
+                                src="{{ url_for('static', filename=product['image']) }}"
+                                alt="{{ product['name'] }}"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- New Image -->
+
+                    <div class="form-group">
+
+                        <label for="image">
+                            Change Product Image
+                        </label>
+
+                        <input
+                            type="file"
+                            id="image"
+                            name="image"
+                            accept=".jpg,.jpeg,.png,.webp"
+                        >
+
+                        <small>
+                            Leave this empty if you want to keep the current image.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+
+                    <div class="admin-form-actions">
+
+                        <button
+                            type="submit"
+                            class="btn"
+                        >
+                            Update Product
+                        </button>
+
+
+                        <a
+                            href="{{ url_for('manage_products') }}"
+                            class="cancel-btn"
+                        >
+                            Cancel
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- Footer -->
+
+            <div class="admin-footer">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+                    ← Back to Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
+```
